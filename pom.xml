@@ -8,18 +8,19 @@
 	<name>my-app</name>
 	<url>http://maven.apache.org</url>
 
-	<dependencies>
-		<dependency>
-		    <groupId>org.apache.poi</groupId>
-		    <artifactId>poi</artifactId>
-		    <version>3.7</version>
-		</dependency>
+	<!-- 1. ADD PROPERTIES HERE -->
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
+	<dependencies>
+		<!-- 2. REMOVED DUPLICATE POI 3.7 - KEPT 4.1.2 BELOW -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.0.1</version>
-			<!-- <scope>provided</scope> -->
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -32,37 +33,36 @@
 		    <artifactId>poi</artifactId>
 		    <version>4.1.2</version>
 		</dependency>
-
 	</dependencies>
+
 	<distributionManagement>
 		 <snapshotRepository>
 		    <id>nexus</id>
 		    <url>http://172.31.15.236:8081/repository/maven-snapshots/</url>
 		 </snapshotRepository>
-		
 		<repository>
 		    <id>nexus</id>
 		    <url>http://172.31.15.236:8081/repository/maven-releases/</url>
 		</repository>
   	</distributionManagement>
 	
-<build>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.6.1</version>
-            <configuration>
-                <source>1.7</source>
-                <target>1.7</target>
-            </configuration>
-        </plugin>
-	<plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>2.19</version>
-        </plugin>
-    </plugins>
-</build>
-	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<!-- 3. UPDATE THESE FROM 1.7 TO 1.8 -->
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19</version>
+			</plugin>
+		</plugins>
+	</build>
 </project>
